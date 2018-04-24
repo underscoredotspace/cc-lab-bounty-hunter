@@ -1,6 +1,6 @@
 require('pg')
 
-class Bounties
+class Bounty
   attr_accessor :id, :name, :species, :bounty_value, :favourite_weapon
 
   def initialize(options)
@@ -53,6 +53,19 @@ class Bounties
     db.close()
   end
 
+  # class methods
+  def Bounty.find_by_name(name)
+    db = PG.connect({
+      dbname: 'space_cowboys',
+      host: 'localhost'
+    })
 
+    sql = "SELECT * FROM bounties WHERE name = $1"
+    db.prepare("find_by_name", sql)
+    result = db.exec_prepared("find_by_name", [name])[0]
+    db.close()
+
+    return Bounty.new(result)
+  end
 
 end
