@@ -21,8 +21,12 @@ An entry in the bounty table must have a selection of 4 of these properties:
 3. Create a Ruby file for your Bounty class
 4. Write your class definition in the file - `initialize`, `attr_reader`s, instance variables
 5. Make the database - `createdb` in command line
+```createdb space_cowboys```
+
 6. Make a .sql file and write some SQL to create your database table
 7. Run the .sql file to set up the table (`psql -d data_base_name -f file_name.sql`)
+```psql -d space_cowboys -f ./db/space_cowboys.sql```
+
 8. Implement `save`, `update` and `delete` methods on your class
 9. Implement a `find_by_name` method that returns one instance of your class when a name is passed in, or nil if no instance is found. Note: this will probably be another class method `ClassName.find_by_name(name)` (do you have to use a map method if it's a single result?)
 10. Implement a second `find` method that returns one instance of your class when an id is passed in. 
