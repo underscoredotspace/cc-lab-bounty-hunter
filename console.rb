@@ -1,3 +1,4 @@
+require("pry")
 require_relative('models/bounties')
 
 bounty1 = Bounties.new({
@@ -12,4 +13,5 @@ bounty1.save()
 bounty1.bounty_value = "6000"
 bounty1.update()
 
-bounty1.delete()
+binding.pry
+nil
